@@ -13,6 +13,10 @@ In the game, you are a red square and have to get the box (brown) to the lower r
 
 # How to Build It
 Assuming that you have the Typescript compiler installed: Open a terminal in this directory, then run `tsc`. There should now be a `index.js` file in this directory.
+```shell
+browserify index.js -o javascript/bundle.js
+```
+
 
 # How to Run It
 To run the game you need to first build it, see above. Then simply open `index.html` in a browser. Use the arrows to move the player.
