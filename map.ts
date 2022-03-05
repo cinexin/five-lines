@@ -1,4 +1,4 @@
-import {Tile} from "./tiles/title";
+import {iTile} from "./tiles/iTile";
 import {Air} from "./tiles/air";
 import {Player} from "./tiles/player";
 import {Unbreakable} from "./tiles/unbreakable";
@@ -36,7 +36,7 @@ let rawMap: RawTile[][] = [
     [2, 4, 1, 1, 1, 9, 0, 2],
     [2, 2, 2, 2, 2, 2, 2, 2],
 ];
-export let map: Tile[][];
+export let map: iTile[][];
 function assertExhausted(x: never): never {
     throw new Error("Unexpected object: " + x);
 }

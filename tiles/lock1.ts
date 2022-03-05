@@ -1,6 +1,7 @@
-import {Tile} from "./title";
+import {iTile} from "./iTile";
+import {TILE_SIZE} from "../config";
 
-export class Lock1 implements Tile {
+export class Lock1 implements iTile {
     isAir(): boolean {
         return false;
     }
@@ -47,6 +48,15 @@ export class Lock1 implements Tile {
 
     isFallingStone(): boolean {
         return false;
+    }
+
+    color(): string {
+        return "#ffcc00";
+    }
+
+    draw(g: CanvasRenderingContext2D, x: number, y: number) {
+        g.fillStyle = this.color();
+        g.fillRect(x * TILE_SIZE, y * TILE_SIZE, TILE_SIZE, TILE_SIZE);
     }
 
 }

@@ -1,6 +1,7 @@
-import {Tile} from "./title";
+import {iTile} from "./iTile";
+import {TILE_SIZE} from "../config";
 
-export class Box implements Tile {
+export class Box implements iTile {
     isAir(): boolean {
         return false;
     }
@@ -47,6 +48,15 @@ export class Box implements Tile {
 
     isFallingStone(): boolean {
         return false;
+    }
+
+    color(): string {
+        return "#8b4513";
+    }
+
+    draw(g: CanvasRenderingContext2D, x: number, y: number) {
+        g.fillStyle = this.color();
+        g.fillRect(x * TILE_SIZE, y * TILE_SIZE, TILE_SIZE, TILE_SIZE);
     }
 
 }

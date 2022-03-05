@@ -1,6 +1,15 @@
-import {Tile} from "./title";
+import {iTile} from "./iTile";
+import {TILE_SIZE} from "../config";
 
-export class FallingStone implements Tile {
+export class FallingStone implements iTile {
+
+    draw(g: CanvasRenderingContext2D, x: number, y: number) {
+        g.fillStyle = this.color();
+        g.fillRect(x * TILE_SIZE, y * TILE_SIZE, TILE_SIZE, TILE_SIZE);
+    }
+    color(): string {
+        return "#0000cc";
+    }
     isAir(): boolean {
         return false;
     }

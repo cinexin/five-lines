@@ -1,6 +1,12 @@
-import {Tile} from "./title";
+import {iTile} from "./iTile";
 
-export class Air implements Tile {
+export class Air implements iTile {
+
+    draw(g: CanvasRenderingContext2D, x: number, y: number) {
+    }
+    color(): string {
+        return "";
+    }
     isAir(): boolean {
         return true;
     }
