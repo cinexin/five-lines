@@ -36,10 +36,6 @@ export class Air implements iTile {
         return false;
     }
 
-    isEdible(): boolean     {
-        return true;
-    }
-
     moveHorizontal(dx: number): void {
         moveToTile({x: player.x + dx, y: player.y});
     }

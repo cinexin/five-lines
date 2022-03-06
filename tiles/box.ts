@@ -42,14 +42,6 @@ export class Box implements iTile {
         g.fillRect(x * TILE_SIZE, y * TILE_SIZE, TILE_SIZE, TILE_SIZE);
     }
 
-    isEdible(): boolean {
-        return false;
-    }
-
-    isPushable(): boolean {
-        return true;
-    }
-
     moveHorizontal(dx: number): void {
         if (map[player.y][player.x + dx + dx].isAir() && ! map[player.y + 1][player.x + dx].isAir()) {
             map[player.y][player.x + dx + dx] = this;

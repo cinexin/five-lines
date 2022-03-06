@@ -26,18 +26,6 @@ export class Flux implements iTile {
         return false;
     }
 
-    isFlux(): boolean {
-        return true;
-    }
-
-    isKey1(): boolean {
-        return false;
-    }
-
-    isKey2(): boolean {
-        return false;
-    }
-
     isLock1(): boolean {
         return false;
     }
@@ -46,23 +34,11 @@ export class Flux implements iTile {
         return false;
     }
 
-    isPlayer(): boolean {
-        return false;
-    }
-
     isStone(): boolean {
         return false;
     }
 
     isUnbreakable(): boolean {
-        return false;
-    }
-
-    isEdible(): boolean {
-        return true;
-    }
-
-    isPushable(): boolean {
         return false;
     }
 

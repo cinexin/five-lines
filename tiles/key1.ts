@@ -46,10 +46,6 @@ export class Key1 implements iTile {
         g.fillRect(x * TILE_SIZE, y * TILE_SIZE, TILE_SIZE, TILE_SIZE);
     }
 
-    isEdible(): boolean {
-        return false;
-    }
-
     moveHorizontal(dx: number): void {
         removeLock1();
         moveToTile({x: player.x + dx, y: player.y});
