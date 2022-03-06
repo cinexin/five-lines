@@ -56,4 +56,17 @@ export class Player implements iTile {
         return false;
     }
 
+    isEdible(): boolean {
+        return false;
+    }
+
+    isPushable(): boolean {
+        return false;
+    }
+
+    moveHorizontal(dx: number): void {
+    }
+
+    moveVertical(dy: number): void {
+    }
 }

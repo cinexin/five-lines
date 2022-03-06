@@ -59,4 +59,17 @@ export class Lock1 implements iTile {
         g.fillRect(x * TILE_SIZE, y * TILE_SIZE, TILE_SIZE, TILE_SIZE);
     }
 
+    isEdible(): boolean {
+        return false;
+    }
+
+    isPushable(): boolean {
+        return false;
+    }
+
+    moveHorizontal(dx: number): void {
+    }
+
+    moveVertical(dy: number): void {
+    }
 }

@@ -15,4 +15,8 @@ export interface iTile {
     color(): string;
 
     draw(g: CanvasRenderingContext2D, x: number, y: number);
+    isEdible(): boolean;
+    isPushable(): boolean;
+    moveHorizontal(dx: number): void;
+    moveVertical(dy: number): void;
 }

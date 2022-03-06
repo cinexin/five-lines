@@ -1,5 +1,6 @@
 import {Input} from "./input";
-import {moveVertical} from "./actions";
+import {map} from "../map";
+import {player} from "../player";
 
 export class Down implements Input {
     isDown(): boolean {
@@ -19,7 +20,7 @@ export class Down implements Input {
     }
 
     handle(): void {
-        moveVertical(1);
+        map[player.y + 1][player.x].moveVertical(1);
     }
 
 }

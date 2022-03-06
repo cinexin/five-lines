@@ -1,5 +1,7 @@
 import {iTile} from "./iTile";
 import {TILE_SIZE} from "../config";
+import {player} from "../player";
+import {moveToTile} from "../input/actions";
 
 export class Flux implements iTile {
     draw(g: CanvasRenderingContext2D, x: number, y: number) {
@@ -56,4 +58,20 @@ export class Flux implements iTile {
         return false;
     }
 
+    isEdible(): boolean {
+        return true;
+    }
+
+    isPushable(): boolean {
+        return false;
+    }
+
+    moveHorizontal(dx: number): void {
+        moveToTile({x: player.x + dx, y: player.y});
+
+    }
+
+    moveVertical(dy: number): void {
+        moveToTile({x:player.x, y: player.y + dy});
+    }
 }

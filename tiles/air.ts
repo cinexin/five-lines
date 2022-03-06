@@ -1,7 +1,8 @@
 import {iTile} from "./iTile";
+import {player} from "../player";
+import {moveToTile} from "../input/actions";
 
 export class Air implements iTile {
-
     draw(g: CanvasRenderingContext2D, x: number, y: number) {
     }
     color(): string {
@@ -53,6 +54,23 @@ export class Air implements iTile {
 
     isFallingStone(): boolean {
         return false;
+    }
+
+    isEdible(): boolean     {
+        return true;
+    }
+
+    isPushable(): boolean {
+        return false;
+    }
+
+    moveHorizontal(dx: number): void {
+        moveToTile({x: player.x + dx, y: player.y});
+    }
+
+    moveVertical(dy: number): void {
+        moveToTile({x:player.x, y: player.y + dy});
+
     }
 
 }

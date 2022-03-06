@@ -1,5 +1,8 @@
 import {iTile} from "./iTile";
 import {TILE_SIZE} from "../config";
+import {player} from "../player";
+import {removeLock2} from "./actions";
+import {moveToTile} from "../input/actions";
 
 export class Key2 implements iTile {
     isAir(): boolean {
@@ -59,4 +62,21 @@ export class Key2 implements iTile {
         g.fillRect(x * TILE_SIZE, y * TILE_SIZE, TILE_SIZE, TILE_SIZE);
     }
 
+    isEdible(): boolean {
+        return false;
+    }
+
+    isPushable(): boolean {
+        return false;
+    }
+
+    moveHorizontal(dx: number): void {
+        removeLock2();
+        moveToTile({x: player.x + dx, y: player.y});
+    }
+
+    moveVertical(dy: number): void {
+        removeLock2();
+        moveToTile({x: player.x, y: player.y + dy});
+    }
 }
