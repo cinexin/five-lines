@@ -17,27 +17,11 @@ export class Key2 implements iTile {
         return false;
     }
 
-    isFlux(): boolean {
-        return false;
-    }
-
-    isKey1(): boolean {
-        return false;
-    }
-
-    isKey2(): boolean {
-        return true;
-    }
-
     isLock1(): boolean {
         return false;
     }
 
     isLock2(): boolean {
-        return false;
-    }
-
-    isPlayer(): boolean {
         return false;
     }
 
@@ -60,14 +44,6 @@ export class Key2 implements iTile {
     draw(g: CanvasRenderingContext2D, x: number, y: number) {
         g.fillStyle = this.color();
         g.fillRect(x * TILE_SIZE, y * TILE_SIZE, TILE_SIZE, TILE_SIZE);
-    }
-
-    isEdible(): boolean {
-        return false;
-    }
-
-    isPushable(): boolean {
-        return false;
     }
 
     moveHorizontal(dx: number): void {

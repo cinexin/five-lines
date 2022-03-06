@@ -17,27 +17,11 @@ export class Key1 implements iTile {
         return false;
     }
 
-    isFlux(): boolean {
-        return false;
-    }
-
-    isKey1(): boolean {
-        return true;
-    }
-
-    isKey2(): boolean {
-        return false;
-    }
-
     isLock1(): boolean {
         return false;
     }
 
     isLock2(): boolean {
-        return false;
-    }
-
-    isPlayer(): boolean {
         return false;
     }
 
@@ -63,10 +47,6 @@ export class Key1 implements iTile {
     }
 
     isEdible(): boolean {
-        return false;
-    }
-
-    isPushable(): boolean {
         return false;
     }
 

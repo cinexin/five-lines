@@ -17,18 +17,6 @@ export class Box implements iTile {
         return false;
     }
 
-    isFlux(): boolean {
-        return false;
-    }
-
-    isKey1(): boolean {
-        return false;
-    }
-
-    isKey2(): boolean {
-        return false;
-    }
-
     isLock1(): boolean {
         return false;
     }
@@ -37,15 +25,7 @@ export class Box implements iTile {
         return false;
     }
 
-    isPlayer(): boolean {
-        return false;
-    }
-
     isStone(): boolean {
-        return false;
-    }
-
-    isUnbreakable(): boolean {
         return false;
     }
 

@@ -20,31 +20,11 @@ export class Air implements iTile {
         return false;
     }
 
-    isFlux(): boolean {
-        return false;
-    }
-
-    isKey1(): boolean {
-        return false;
-    }
-
-    isKey2(): boolean {
-        return false;
-    }
-
     isLock1(): boolean {
         return false;
     }
 
     isLock2(): boolean {
-        return false;
-    }
-
-    isPlayer(): boolean {
-        return false;
-    }
-
-    isStone(): boolean {
         return false;
     }
 
@@ -60,10 +40,6 @@ export class Air implements iTile {
         return true;
     }
 
-    isPushable(): boolean {
-        return false;
-    }
-
     moveHorizontal(dx: number): void {
         moveToTile({x: player.x + dx, y: player.y});
     }
@@ -71,6 +47,10 @@ export class Air implements iTile {
     moveVertical(dy: number): void {
         moveToTile({x:player.x, y: player.y + dy});
 
+    }
+
+    isStone(): boolean {
+        return false;
     }
 
 }

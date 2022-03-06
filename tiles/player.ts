@@ -20,28 +20,12 @@ export class Player implements iTile {
         return false;
     }
 
-    isFlux(): boolean {
-        return false;
-    }
-
-    isKey1(): boolean {
-        return false;
-    }
-
-    isKey2(): boolean {
-        return false;
-    }
-
     isLock1(): boolean {
         return false;
     }
 
     isLock2(): boolean {
         return false;
-    }
-
-    isPlayer(): boolean {
-        return true;
     }
 
     isStone(): boolean {
@@ -53,14 +37,6 @@ export class Player implements iTile {
     }
 
     isFallingStone(): boolean {
-        return false;
-    }
-
-    isEdible(): boolean {
-        return false;
-    }
-
-    isPushable(): boolean {
         return false;
     }
 

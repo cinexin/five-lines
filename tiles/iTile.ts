@@ -1,22 +1,14 @@
 export interface iTile {
     isAir(): boolean;
-    isFlux(): boolean;
-    isUnbreakable(): boolean;
-    isPlayer(): boolean;
-    isStone(): boolean;
-    isFallingStone(): boolean;
     isBox(): boolean;
+    isFallingStone(): boolean;
     isFallingBox(): boolean;
-    isKey1(): boolean;
     isLock1(): boolean;
-    isKey2(): boolean;
     isLock2(): boolean;
-
+    isStone(): boolean;
     color(): string;
 
     draw(g: CanvasRenderingContext2D, x: number, y: number);
-    isEdible(): boolean;
-    isPushable(): boolean;
     moveHorizontal(dx: number): void;
     moveVertical(dy: number): void;
 }
