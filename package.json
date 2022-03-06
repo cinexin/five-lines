@@ -28,13 +28,10 @@
   "files": [
     "index.ts",
     "map.ts",
+    "config.ts",
     "player.ts",
     "position.ts",
-    "input/actions.ts",
-    "input/up.ts",
-    "input/down.ts",
-    "input/left.ts",
-    "input/right.ts",
+    "input/*.ts",
     "tiles/*.ts"
   ]
 }
