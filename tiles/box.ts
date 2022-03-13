@@ -51,4 +51,12 @@ export class Box implements iTile {
 
     moveVertical(dy: number): void {
     }
+
+    isBoxy(): boolean {
+        return true;
+    }
+
+    isStony(): boolean {
+        return false;
+    }
 }

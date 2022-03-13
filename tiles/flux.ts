@@ -50,4 +50,12 @@ export class Flux implements iTile {
     moveVertical(dy: number): void {
         moveToTile({x:player.x, y: player.y + dy});
     }
+
+    isBoxy(): boolean {
+        return false;
+    }
+
+    isStony(): boolean {
+        return false;
+    }
 }

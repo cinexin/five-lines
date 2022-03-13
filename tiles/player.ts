@@ -45,4 +45,12 @@ export class Player implements iTile {
 
     moveVertical(dy: number): void {
     }
+
+    isBoxy(): boolean {
+        return false;
+    }
+
+    isStony(): boolean {
+        return false;
+    }
 }

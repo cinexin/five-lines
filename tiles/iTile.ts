@@ -3,6 +3,8 @@ export interface iTile {
     isBox(): boolean;
     isFallingStone(): boolean;
     isFallingBox(): boolean;
+    isStony(): boolean;
+    isBoxy(): boolean;
     isLock1(): boolean;
     isLock2(): boolean;
     isStone(): boolean;

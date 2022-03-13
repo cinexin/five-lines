@@ -49,4 +49,12 @@ export class Air implements iTile {
         return false;
     }
 
+    isBoxy(): boolean {
+        return false;
+    }
+
+    isStony(): boolean {
+        return false;
+    }
+
 }

@@ -5,6 +5,12 @@ import {removeLock2} from "./actions";
 import {moveToTile} from "../input/actions";
 
 export class Key2 implements iTile {
+    isStony(): boolean {
+        return false;
+    }
+    isBoxy(): boolean {
+        return false;
+    }
     isAir(): boolean {
         return false;
     }

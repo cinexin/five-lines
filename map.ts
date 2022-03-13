@@ -3,7 +3,6 @@ import {Air} from "./tiles/air";
 import {Player} from "./tiles/player";
 import {Unbreakable} from "./tiles/unbreakable";
 import {Stone} from "./tiles/stone";
-import {FallingStone} from "./tiles/falling-stone";
 import {Box} from "./tiles/box";
 import {FallingBox} from "./tiles/falling-box";
 import {Flux} from "./tiles/flux";
@@ -45,8 +44,8 @@ function transformTile(tile: RawTile) {
         case RawTile.AIR: return new Air();
         case RawTile.PLAYER: return new Player();
         case RawTile.UNBREAKABLE: return new Unbreakable();
-        case RawTile.STONE: return new Stone();
-        case RawTile.FALLING_STONE: return new FallingStone();
+        case RawTile.STONE: return new Stone(false);
+        case RawTile.FALLING_STONE: return new Stone(true);
         case RawTile.BOX: return new Box();
         case RawTile.FALLING_BOX: return new FallingBox();
         case RawTile.FLUX: return new Flux();

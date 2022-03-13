@@ -56,4 +56,12 @@ export class Key1 implements iTile {
         moveToTile({x: player.x, y: player.y + dy});
 
     }
+
+    isBoxy(): boolean {
+        return false;
+    }
+
+    isStony(): boolean {
+        return false;
+    }
 }

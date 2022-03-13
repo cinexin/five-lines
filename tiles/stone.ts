@@ -5,6 +5,11 @@ import {player} from "../player";
 import {moveToTile} from "../input/actions";
 
 export class Stone implements iTile {
+    private falling: boolean;
+
+    constructor(falling: boolean) {
+        this.falling = falling;
+    }
     isAir(): boolean {
         return false;
     }
@@ -34,7 +39,7 @@ export class Stone implements iTile {
     }
 
     isFallingStone(): boolean {
-        return false;
+        return this.falling;
     }
 
     color(): string {
@@ -48,12 +53,24 @@ export class Stone implements iTile {
 
 
     moveHorizontal(dx: number): void {
-        if (map[player.y][player.x + dx + dx].isAir() && ! map[player.y + 1][player.x + dx].isAir()) {
-            map[player.y][player.x + dx + dx] = this;
-            moveToTile({x: player.x + dx, y: player.y});
+        if (this.isFallingStone() === false) {
+            if (map[player.y][player.x + dx + dx].isAir() && ! map[player.y + 1][player.x + dx].isAir()) {
+                map[player.y][player.x + dx + dx] = this;
+                moveToTile({x: player.x + dx, y: player.y});
+            }
+        } else if (this.isFallingStone() === true) {
+
         }
     }
 
     moveVertical(dy: number): void {
+    }
+
+    isBoxy(): boolean {
+        return false;
+    }
+
+    isStony(): boolean {
+        return true;
     }
 }
