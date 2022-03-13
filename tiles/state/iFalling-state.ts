@@ -1,4 +1,4 @@
-import {iTile} from "./iTile";
+import {iTile} from "../iTile";
 
 export interface IFallingState {
     isFalling(): boolean;

@@ -10,8 +10,8 @@ import {Up} from "./input/up";
 import {Right} from "./input/right";
 import {Down} from "./input/down";
 import {SLEEP, TILE_SIZE} from "./config";
-import {Falling} from "./tiles/falling";
-import {Stopped} from "./tiles/stopped";
+import {Falling} from "./tiles/state/falling";
+import {Stopped} from "./tiles/state/stopped";
 
 let inputs: Input[] = [];
 

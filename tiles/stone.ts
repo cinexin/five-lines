@@ -1,6 +1,6 @@
 import {iTile} from "./iTile";
 import {TILE_SIZE} from "../config";
-import {IFallingState} from "./iFalling-state";
+import {IFallingState} from "./state/iFalling-state";
 
 export class Stone implements iTile {
 

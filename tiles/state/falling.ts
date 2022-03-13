@@ -1,5 +1,5 @@
 import {IFallingState} from "./iFalling-state";
-import {iTile} from "./iTile";
+import {iTile} from "../iTile";
 
 export class Falling implements IFallingState {
     isFalling(): boolean {

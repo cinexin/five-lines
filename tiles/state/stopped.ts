@@ -1,8 +1,8 @@
 import {IFallingState} from "./iFalling-state";
-import {map} from "../map";
-import {player} from "../player";
-import {iTile} from "./iTile";
-import {moveToTile} from "../input/actions";
+import {map} from "../../map";
+import {player} from "../../player";
+import {iTile} from "../iTile";
+import {moveToTile} from "../../input/actions";
 
 export class Stopped implements IFallingState {
     isFalling(): boolean {
