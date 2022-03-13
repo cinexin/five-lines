@@ -32,10 +32,6 @@ export class Player implements iTile {
         return false;
     }
 
-    isUnbreakable(): boolean {
-        return false;
-    }
-
     isFallingStone(): boolean {
         return false;
     }
@@ -51,6 +47,16 @@ export class Player implements iTile {
     }
 
     isStony(): boolean {
+        return false;
+    }
+
+    drop() {
+    }
+
+    stopDropping() {
+    }
+
+    isFalling(): boolean {
         return false;
     }
 }

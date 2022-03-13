@@ -1,10 +1,23 @@
 import {iTile} from "./iTile";
 import {TILE_SIZE} from "../config";
 import {IFallingState} from "./state/iFalling-state";
+import {Falling} from "./state/falling";
+import {Stopped} from "./state/stopped";
 
 export class Stone implements iTile {
+    drop() {
+        this.fallingState = new Falling();
+    }
+
+    stopDropping() {
+        this.fallingState = new Stopped();
+    }
 
     constructor(private fallingState: IFallingState) {
+    }
+
+    isFalling(): boolean {
+        return this.fallingState.isFalling();
     }
     isAir(): boolean {
         return false;

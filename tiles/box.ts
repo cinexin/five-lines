@@ -1,6 +1,8 @@
 import {iTile} from "./iTile";
 import {TILE_SIZE} from "../config";
 import {IFallingState} from "./state/iFalling-state";
+import {Falling} from "./state/falling";
+import {Stopped} from "./state/stopped";
 
 export class Box implements iTile {
 
@@ -57,5 +59,17 @@ export class Box implements iTile {
 
     isStony(): boolean {
         return false;
+    }
+
+    drop() {
+        this.fallingState = new Falling();
+    }
+
+    stopDropping() {
+        this.fallingState = new Stopped();
+    }
+
+    isFalling(): boolean {
+        return this.fallingState.isFalling();
     }
 }

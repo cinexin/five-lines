@@ -26,10 +26,6 @@ export class Unbreakable implements iTile {
         return false;
     }
 
-    isUnbreakable(): boolean {
-        return true;
-    }
-
     isFallingStone(): boolean {
         return false;
     }
@@ -54,6 +50,16 @@ export class Unbreakable implements iTile {
     }
 
     isStony(): boolean {
+        return false;
+    }
+
+    drop() {
+    }
+
+    stopDropping() {
+    }
+
+    isFalling(): boolean {
         return false;
     }
 

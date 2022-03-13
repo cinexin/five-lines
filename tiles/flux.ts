@@ -4,6 +4,14 @@ import {player} from "../player";
 import {moveToTile} from "../input/actions";
 
 export class Flux implements iTile {
+    isFalling(): boolean {
+        return false;
+    }
+    drop() {
+
+    }
+    stopDropping() {
+    }
     draw(g: CanvasRenderingContext2D, x: number, y: number) {
         g.fillStyle = this.color();
         g.fillRect(x * TILE_SIZE, y * TILE_SIZE, TILE_SIZE, TILE_SIZE);

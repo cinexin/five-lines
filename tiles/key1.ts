@@ -64,4 +64,14 @@ export class Key1 implements iTile {
     isStony(): boolean {
         return false;
     }
+
+    drop() {
+    }
+
+    stopDropping() {
+    }
+
+    isFalling(): boolean {
+        return false;
+    }
 }

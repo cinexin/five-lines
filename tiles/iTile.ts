@@ -3,6 +3,7 @@ export interface iTile {
     isBox(): boolean;
     isFallingStone(): boolean;
     isFallingBox(): boolean;
+    isFalling(): boolean;
     isStony(): boolean;
     isBoxy(): boolean;
     isLock1(): boolean;
@@ -13,4 +14,7 @@ export interface iTile {
     draw(g: CanvasRenderingContext2D, x: number, y: number);
     moveHorizontal(dx: number): void;
     moveVertical(dy: number): void;
+
+    drop();
+    stopDropping();
 }

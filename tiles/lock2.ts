@@ -2,6 +2,12 @@ import {iTile} from "./iTile";
 import {TILE_SIZE} from "../config";
 
 export class Lock2 implements iTile {
+    drop() {
+
+    }
+    stopDropping() {
+
+    }
     draw(g: CanvasRenderingContext2D, x: number, y: number) {
         g.fillStyle = this.color();
         g.fillRect(x * TILE_SIZE, y * TILE_SIZE, TILE_SIZE, TILE_SIZE);
@@ -38,10 +44,6 @@ export class Lock2 implements iTile {
         return false;
     }
 
-    isUnbreakable(): boolean {
-        return false;
-    }
-
     moveHorizontal(dx: number): void {
     }
 
@@ -53,6 +55,10 @@ export class Lock2 implements iTile {
     }
 
     isStony(): boolean {
+        return false;
+    }
+
+    isFalling(): boolean {
         return false;
     }
 }
