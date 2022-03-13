@@ -1,14 +1,10 @@
 import {iTile} from "./iTile";
 import {TILE_SIZE} from "../config";
-import {map} from "../map";
-import {player} from "../player";
-import {moveToTile} from "../input/actions";
+import {IFallingState} from "./iFalling-state";
 
 export class Stone implements iTile {
-    private falling: boolean;
 
-    constructor(falling: boolean) {
-        this.falling = falling;
+    constructor(private fallingState: IFallingState) {
     }
     isAir(): boolean {
         return false;
@@ -39,7 +35,7 @@ export class Stone implements iTile {
     }
 
     isFallingStone(): boolean {
-        return this.falling;
+        return this.fallingState.isFalling();
     }
 
     color(): string {
@@ -53,14 +49,7 @@ export class Stone implements iTile {
 
 
     moveHorizontal(dx: number): void {
-        if (this.isFallingStone() === false) {
-            if (map[player.y][player.x + dx + dx].isAir() && ! map[player.y + 1][player.x + dx].isAir()) {
-                map[player.y][player.x + dx + dx] = this;
-                moveToTile({x: player.x + dx, y: player.y});
-            }
-        } else if (this.isFallingStone() === true) {
-
-        }
+        this.fallingState.moveHorizontal(this, dx);
     }
 
     moveVertical(dy: number): void {

@@ -10,6 +10,8 @@ import {Up} from "./input/up";
 import {Right} from "./input/right";
 import {Down} from "./input/down";
 import {SLEEP, TILE_SIZE} from "./config";
+import {Falling} from "./tiles/falling";
+import {Stopped} from "./tiles/stopped";
 
 let inputs: Input[] = [];
 
@@ -22,13 +24,13 @@ function handleInputs() {
 
 function updateTile(x: number, y: number) {
   if (map[y][x].isStony() && map[y + 1][x].isAir()) {
-    map[y + 1][x] = new Stone(true);
+    map[y + 1][x] = new Stone(new Falling());
     map[y][x] = new Air();
   } else if (map[y][x].isBoxy() && map[y + 1][x].isAir()) {
     map[y + 1][x] = new FallingBox();
     map[y][x] = new Air();
   } else if (map[y][x].isFallingStone()) {
-    map[y][x] = new Stone(false);
+    map[y][x] = new Stone(new Stopped());
   } else if (map[y][x].isFallingBox()) {
     map[y][x] = new Box();
   }

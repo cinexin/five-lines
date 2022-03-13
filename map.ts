@@ -10,6 +10,8 @@ import {Key1} from "./tiles/key1";
 import {Lock1} from "./tiles/lock1";
 import {Key2} from "./tiles/key2";
 import {Lock2} from "./tiles/lock2";
+import {Stopped} from "./tiles/stopped";
+import {Falling} from "./tiles/falling";
 
 enum RawTile {
     AIR,
@@ -44,8 +46,8 @@ function transformTile(tile: RawTile) {
         case RawTile.AIR: return new Air();
         case RawTile.PLAYER: return new Player();
         case RawTile.UNBREAKABLE: return new Unbreakable();
-        case RawTile.STONE: return new Stone(false);
-        case RawTile.FALLING_STONE: return new Stone(true);
+        case RawTile.STONE: return new Stone(new Stopped());
+        case RawTile.FALLING_STONE: return new Stone(new Falling());
         case RawTile.BOX: return new Box();
         case RawTile.FALLING_BOX: return new FallingBox();
         case RawTile.FLUX: return new Flux();
