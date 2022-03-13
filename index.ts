@@ -1,6 +1,5 @@
 import {Input} from "./input/input";
 import {Air} from "./tiles/air";
-import {FallingBox} from "./tiles/falling-box";
 import {Stone} from "./tiles/stone";
 import {Box} from "./tiles/box";
 import {map, transformMap} from "./map";
@@ -27,12 +26,12 @@ function updateTile(x: number, y: number) {
     map[y + 1][x] = new Stone(new Falling());
     map[y][x] = new Air();
   } else if (map[y][x].isBoxy() && map[y + 1][x].isAir()) {
-    map[y + 1][x] = new FallingBox();
+    map[y + 1][x] = new Box(new Falling());
     map[y][x] = new Air();
   } else if (map[y][x].isFallingStone()) {
     map[y][x] = new Stone(new Stopped());
   } else if (map[y][x].isFallingBox()) {
-    map[y][x] = new Box();
+    map[y][x] = new Box(new Stopped());
   }
 }
 

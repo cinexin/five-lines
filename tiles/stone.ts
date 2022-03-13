@@ -30,10 +30,6 @@ export class Stone implements iTile {
         return true;
     }
 
-    isUnbreakable(): boolean {
-        return false;
-    }
-
     isFallingStone(): boolean {
         return this.fallingState.isFalling();
     }

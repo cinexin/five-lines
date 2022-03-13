@@ -4,7 +4,6 @@ import {Player} from "./tiles/player";
 import {Unbreakable} from "./tiles/unbreakable";
 import {Stone} from "./tiles/stone";
 import {Box} from "./tiles/box";
-import {FallingBox} from "./tiles/falling-box";
 import {Flux} from "./tiles/flux";
 import {Key1} from "./tiles/key1";
 import {Lock1} from "./tiles/lock1";
@@ -48,8 +47,8 @@ function transformTile(tile: RawTile) {
         case RawTile.UNBREAKABLE: return new Unbreakable();
         case RawTile.STONE: return new Stone(new Stopped());
         case RawTile.FALLING_STONE: return new Stone(new Falling());
-        case RawTile.BOX: return new Box();
-        case RawTile.FALLING_BOX: return new FallingBox();
+        case RawTile.BOX: return new Box(new Stopped());
+        case RawTile.FALLING_BOX: return new Box(new Falling());
         case RawTile.FLUX: return new Flux();
         case RawTile.KEY1: return new Key1();
         case RawTile.LOCK1: return new Lock1();
