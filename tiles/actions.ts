@@ -1,20 +1,11 @@
 import {Air} from "./air";
 import {map} from "../map";
+import {IRemoveStrategy} from "./iRemove-strategy";
 
-export function removeLock1() {
+export function removeLock(shouldRemove: IRemoveStrategy) {
     for (let y = 0; y < map.length; y++) {
         for (let x = 0; x < map[y].length; x++) {
-            if (map[y][x].isLock1()) {
-                map[y][x] = new Air();
-            }
-        }
-    }
-}
-
-export function removeLock2() {
-    for (let y = 0; y < map.length; y++) {
-        for (let x = 0; x < map[y].length; x++) {
-            if (map[y][x].isLock2()) {
+            if (shouldRemove.check(map[y][x])) {
                 map[y][x] = new Air();
             }
         }

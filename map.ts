@@ -5,12 +5,13 @@ import {Unbreakable} from "./tiles/unbreakable";
 import {Stone} from "./tiles/stone";
 import {Box} from "./tiles/box";
 import {Flux} from "./tiles/flux";
-import {Key1} from "./tiles/key1";
-import {Lock1} from "./tiles/lock1";
-import {Key2} from "./tiles/key2";
-import {Lock2} from "./tiles/lock2";
 import {Stopped} from "./tiles/state/stopped";
 import {Falling} from "./tiles/state/falling";
+import {Key} from "./tiles/key";
+import {RemoveLock1} from "./tiles/remove-lock-1";
+import {Lock} from "./tiles/lock";
+import {RemoveLock2} from "./tiles/remove-lock-2";
+import {KeyConfiguration} from "./tiles/key-configuration";
 
 enum RawTile {
     AIR,
@@ -40,6 +41,10 @@ export let map: iTile[][];
 function assertExhausted(x: never): never {
     throw new Error("Unexpected object: " + x);
 }
+
+const YELLOW_KEY = new KeyConfiguration("#ffcc00", true, new RemoveLock1());
+const BLUE_KEY = new KeyConfiguration("#00ccff", false, new RemoveLock2());
+
 function transformTile(tile: RawTile) {
     switch (tile) {
         case RawTile.AIR: return new Air();
@@ -50,10 +55,10 @@ function transformTile(tile: RawTile) {
         case RawTile.BOX: return new Box(new Stopped());
         case RawTile.FALLING_BOX: return new Box(new Falling());
         case RawTile.FLUX: return new Flux();
-        case RawTile.KEY1: return new Key1();
-        case RawTile.LOCK1: return new Lock1();
-        case RawTile.KEY2: return new Key2();
-        case RawTile.LOCK2: return new Lock2();
+        case RawTile.KEY1: return new Key(YELLOW_KEY);
+        case RawTile.LOCK1: return new Lock(YELLOW_KEY);
+        case RawTile.KEY2: return new Key(BLUE_KEY);
+        case RawTile.LOCK2: return new Lock(BLUE_KEY);
         default: assertExhausted(tile);
     }
 }
