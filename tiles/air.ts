@@ -1,7 +1,6 @@
 import {iTile} from "./iTile";
 import {player} from "../player";
 import {moveToTile} from "../input/actions";
-import {map} from "../map";
 
 export class Air implements iTile {
 
@@ -14,11 +13,7 @@ export class Air implements iTile {
         return true;
     }
 
-    isBox(): boolean {
-        return false;
-    }
-
-    isFallingBox(): boolean {
+    isFalling(): boolean {
         return false;
     }
 
@@ -27,10 +22,6 @@ export class Air implements iTile {
     }
 
     isLock2(): boolean {
-        return false;
-    }
-
-    isFallingStone(): boolean {
         return false;
     }
 
@@ -43,29 +34,10 @@ export class Air implements iTile {
 
     }
 
-    isStone(): boolean {
-        return false;
-    }
-
-    isBoxy(): boolean {
-        return false;
-    }
-
-    isStony(): boolean {
-        return false;
-    }
-    canFall(): boolean {
-        return false;
-    }
-
     drop() {
     }
 
     stopDropping() {
-    }
-
-    isFalling(): boolean {
-        return false;
     }
 
     update(x: number, y: number) {

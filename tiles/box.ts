@@ -16,11 +16,7 @@ export class Box implements iTile {
         return false;
     }
 
-    isBox(): boolean {
-        return true;
-    }
-
-    isFallingBox(): boolean {
+    isFalling(): boolean {
         return this.fallingState.isFalling();
     }
 
@@ -29,14 +25,6 @@ export class Box implements iTile {
     }
 
     isLock2(): boolean {
-        return false;
-    }
-
-    isStone(): boolean {
-        return false;
-    }
-
-    isFallingStone(): boolean {
         return false;
     }
 
@@ -56,18 +44,6 @@ export class Box implements iTile {
     moveVertical(dy: number): void {
     }
 
-    isBoxy(): boolean {
-        return true;
-    }
-
-    isStony(): boolean {
-        return false;
-    }
-
-    canFall(): boolean {
-        return true;
-    }
-
     drop() {
         this.fallingState = new Falling();
     }
@@ -76,9 +52,6 @@ export class Box implements iTile {
         this.fallingState = new Stopped();
     }
 
-    isFalling(): boolean {
-        return this.fallingState.isFalling();
-    }
 
     update(x: number, y: number) {
         if (map[y + 1][x].isAir()) {

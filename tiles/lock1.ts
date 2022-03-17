@@ -1,18 +1,8 @@
 import {iTile} from "./iTile";
 import {TILE_SIZE} from "../config";
-import {map} from "../map";
-import {Air} from "./air";
 
 export class Lock1 implements iTile {
     isAir(): boolean {
-        return false;
-    }
-
-    isBox(): boolean {
-        return false;
-    }
-
-    isFallingBox(): boolean {
         return false;
     }
 
@@ -21,18 +11,6 @@ export class Lock1 implements iTile {
     }
 
     isLock2(): boolean {
-        return false;
-    }
-
-    isStone(): boolean {
-        return false;
-    }
-
-    isUnbreakable(): boolean {
-        return false;
-    }
-
-    isFallingStone(): boolean {
         return false;
     }
 
@@ -49,18 +27,6 @@ export class Lock1 implements iTile {
     }
 
     moveVertical(dy: number): void {
-    }
-
-    isBoxy(): boolean {
-        return false;
-    }
-
-    isStony(): boolean {
-        return false;
-    }
-
-    canFall(): boolean {
-        return false;
     }
 
     drop() {

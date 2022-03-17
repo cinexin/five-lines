@@ -1,9 +1,23 @@
 import {iTile} from "./iTile";
 import {TILE_SIZE} from "../config";
-import {map} from "../map";
-import {Air} from "./air";
 
 export class Lock2 implements iTile {
+    isAir(): boolean {
+        return false;
+    }
+
+    isLock1(): boolean {
+        return false;
+    }
+
+    isLock2(): boolean {
+        return true;
+    }
+
+    isFalling(): boolean {
+        return false;
+    }
+
     drop() {
 
     }
@@ -17,56 +31,11 @@ export class Lock2 implements iTile {
     color(): string {
         return "#00ccff";
     }
-    isAir(): boolean {
-        return false;
-    }
-
-    isBox(): boolean {
-        return false;
-    }
-
-    isFallingBox(): boolean {
-        return false;
-    }
-
-    isFallingStone(): boolean {
-        return false;
-    }
-
-    isLock1(): boolean {
-        return false;
-    }
-
-    isLock2(): boolean {
-        return true;
-    }
-
-
-    isStone(): boolean {
-        return false;
-    }
 
     moveHorizontal(dx: number): void {
     }
 
     moveVertical(dy: number): void {
-    }
-
-    isBoxy(): boolean {
-        return false;
-    }
-
-    isStony(): boolean {
-        return false;
-    }
-
-    canFall(): boolean {
-        return false;
-    }
-
-
-    isFalling(): boolean {
-        return false;
     }
 
     update(x: number, y: number) {

@@ -1,24 +1,8 @@
 import {iTile} from "./iTile";
-import {map} from "../map";
-import {Air} from "./air";
 
 export class Player implements iTile {
 
-    draw(g: CanvasRenderingContext2D, x: number, y: number) {
-
-    }
-    color(): string {
-        return "";
-    }
     isAir(): boolean {
-        return false;
-    }
-
-    isBox(): boolean {
-        return false;
-    }
-
-    isFallingBox(): boolean {
         return false;
     }
 
@@ -30,12 +14,15 @@ export class Player implements iTile {
         return false;
     }
 
-    isStone(): boolean {
+    isFalling(): boolean {
         return false;
     }
 
-    isFallingStone(): boolean {
-        return false;
+    draw(g: CanvasRenderingContext2D, x: number, y: number) {
+
+    }
+    color(): string {
+        return "";
     }
 
     moveHorizontal(dx: number): void {
@@ -44,26 +31,10 @@ export class Player implements iTile {
     moveVertical(dy: number): void {
     }
 
-    isBoxy(): boolean {
-        return false;
-    }
-
-    isStony(): boolean {
-        return false;
-    }
-
-    canFall(): boolean {
-        return false;
-    }
-    
     drop() {
     }
 
     stopDropping() {
-    }
-
-    isFalling(): boolean {
-        return false;
     }
 
     update(x: number, y: number) {

@@ -1,7 +1,4 @@
 import {Input} from "./input/input";
-import {Air} from "./tiles/air";
-import {Stone} from "./tiles/stone";
-import {Box} from "./tiles/box";
 import {map, transformMap} from "./map";
 import {player} from "./player";
 import {Left} from "./input/left";
@@ -9,7 +6,6 @@ import {Up} from "./input/up";
 import {Right} from "./input/right";
 import {Down} from "./input/down";
 import {SLEEP, TILE_SIZE} from "./config";
-import {Falling} from "./tiles/state/falling";
 
 let inputs: Input[] = [];
 

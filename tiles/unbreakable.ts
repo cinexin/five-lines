@@ -1,9 +1,5 @@
 import {iTile} from "./iTile";
 import {TILE_SIZE} from "../config";
-import {map} from "../map";
-import {Falling} from "./state/falling";
-import {Air} from "./air";
-import {Stopped} from "./state/stopped";
 
 export class Unbreakable implements iTile {
 
@@ -11,11 +7,7 @@ export class Unbreakable implements iTile {
         return false;
     }
 
-    isBox(): boolean {
-        return false;
-    }
-
-    isFallingBox(): boolean {
+    isFalling(): boolean {
         return false;
     }
 
@@ -24,14 +16,6 @@ export class Unbreakable implements iTile {
     }
 
     isLock2(): boolean {
-        return false;
-    }
-
-    isStone(): boolean {
-        return false;
-    }
-
-    isFallingStone(): boolean {
         return false;
     }
 
@@ -50,26 +34,10 @@ export class Unbreakable implements iTile {
     moveVertical(dy: number): void {
     }
 
-    isBoxy(): boolean {
-        return false;
-    }
-
-    isStony(): boolean {
-        return false;
-    }
-
-    canFall(): boolean {
-        return false;
-    }
-
     drop() {
     }
 
     stopDropping() {
-    }
-
-    isFalling(): boolean {
-        return false;
     }
 
     update(x: number, y: number) {

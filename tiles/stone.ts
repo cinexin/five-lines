@@ -7,29 +7,10 @@ import {map} from "../map";
 import {Air} from "./air";
 
 export class Stone implements iTile {
-    drop() {
-        this.fallingState = new Falling();
-    }
-
-    stopDropping() {
-        this.fallingState = new Stopped();
-    }
-
-    constructor(private fallingState: IFallingState) {
-    }
-
     isFalling(): boolean {
         return this.fallingState.isFalling();
     }
     isAir(): boolean {
-        return false;
-    }
-
-    isBox(): boolean {
-        return false;
-    }
-
-    isFallingBox(): boolean {
         return false;
     }
 
@@ -41,16 +22,19 @@ export class Stone implements iTile {
         return false;
     }
 
-    isStone(): boolean {
-        return true;
-    }
-
-    isFallingStone(): boolean {
-        return this.fallingState.isFalling();
-    }
-
     color(): string {
         return "#0000cc";
+    }
+
+    drop() {
+        this.fallingState = new Falling();
+    }
+
+    stopDropping() {
+        this.fallingState = new Stopped();
+    }
+
+    constructor(private fallingState: IFallingState) {
     }
 
     draw(g: CanvasRenderingContext2D, x: number, y: number) {
@@ -66,17 +50,6 @@ export class Stone implements iTile {
     moveVertical(dy: number): void {
     }
 
-    isBoxy(): boolean {
-        return false;
-    }
-
-    isStony(): boolean {
-        return true;
-    }
-
-    canFall(): boolean {
-        return true;
-    }
 
     update(x: number, y: number) {
         if (map[y + 1][x].isAir()) {
