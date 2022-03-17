@@ -5,12 +5,14 @@ import {Falling} from "./state/falling";
 import {Stopped} from "./state/stopped";
 import {map} from "../map";
 import {Air} from "./air";
+import {FallStrategy} from "./fall-strategy";
 
 export class Box implements iTile {
+    private fallStrategy: FallStrategy;
 
     constructor(private fallingState: IFallingState) {
+        this.fallStrategy = new FallStrategy(this.fallingState);
     }
-
 
     isAir(): boolean {
         return false;
@@ -38,7 +40,7 @@ export class Box implements iTile {
     }
 
     moveHorizontal(dx: number): void {
-        this.fallingState.moveHorizontal(this, dx);
+        this.fallStrategy.getFalling().moveHorizontal(this, dx);
     }
 
     moveVertical(dy: number): void {
@@ -54,12 +56,6 @@ export class Box implements iTile {
 
 
     update(x: number, y: number) {
-        if (map[y + 1][x].isAir()) {
-            this.fallingState = new Falling();
-            map[y + 1][x] = this;
-            map[y][x] = new Air();
-        } else if (map[y][x].isFalling()) {
-            this.fallingState = new Stopped();
-        }
+        this.fallStrategy.update(this, x, y);
     }
 }
