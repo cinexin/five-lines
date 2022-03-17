@@ -21,4 +21,7 @@ export class Stopped implements IFallingState {
         }
     }
 
+    drop(tile: iTile, x: number, y: number): void {
+    }
+
 }

@@ -1,9 +1,9 @@
 import {iTile} from "./iTile";
-import {TILE_SIZE} from "../config";
-import {removeLock} from "./actions";
 import {moveToTile} from "../input/actions";
 import {player} from "../player";
 import {KeyConfiguration} from "./key-configuration";
+import {IFallingState} from "./state/iFalling-state";
+import {Stopped} from "./state/stopped";
 
 export class Key implements iTile {
 
@@ -12,13 +12,8 @@ export class Key implements iTile {
     ) {
     }
 
-    color(): string {
-        return this.keyConfiguration.getColor();
-    }
-
     draw(g: CanvasRenderingContext2D, x: number, y: number) {
-        g.fillStyle = this.color();
-        g.fillRect(x * TILE_SIZE, y * TILE_SIZE, TILE_SIZE, TILE_SIZE);
+        this.keyConfiguration.coloring(g, x, y);
     }
 
     drop() {
@@ -41,12 +36,12 @@ export class Key implements iTile {
     }
 
     moveHorizontal(dx: number): void {
-        removeLock(this.keyConfiguration.getRemoveStrategy());
+        this.keyConfiguration.removeLock();
         moveToTile({x: player.x + dx, y: player.y});
     }
 
     moveVertical(dy: number): void {
-        removeLock(this.keyConfiguration.getRemoveStrategy());
+        this.keyConfiguration.removeLock();
         moveToTile({x: player.x, y: player.y + dy});
     }
 
@@ -54,6 +49,10 @@ export class Key implements iTile {
     }
 
     update(x: number, y: number) {
+    }
+
+    computeFallingBlockCollision(): IFallingState {
+        return new Stopped();
     }
 
 }

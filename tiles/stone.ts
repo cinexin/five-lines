@@ -46,7 +46,7 @@ export class Stone implements iTile {
 
 
     moveHorizontal(dx: number): void {
-        this.fallStrategy.getFalling().moveHorizontal(this, dx);
+        this.fallStrategy.moveHorizontal(this, dx);
     }
 
     moveVertical(dy: number): void {
@@ -55,5 +55,9 @@ export class Stone implements iTile {
 
     update(x: number, y: number) {
         this.fallStrategy.update(this, x, y);
+    }
+
+    computeFallingBlockCollision(): IFallingState {
+        return new Stopped();
     }
 }

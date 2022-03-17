@@ -12,6 +12,10 @@ export class Box implements iTile {
         this.fallStrategy = new FallStrategy(this.fallingState);
     }
 
+    computeFallingBlockCollision(): IFallingState {
+        return new Stopped();
+    }
+
     isAir(): boolean {
         return false;
     }
@@ -38,7 +42,7 @@ export class Box implements iTile {
     }
 
     moveHorizontal(dx: number): void {
-        this.fallStrategy.getFalling().moveHorizontal(this, dx);
+        this.fallStrategy.moveHorizontal(this, dx);
     }
 
     moveVertical(dy: number): void {

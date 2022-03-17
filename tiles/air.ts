@@ -1,14 +1,18 @@
 import {iTile} from "./iTile";
 import {player} from "../player";
 import {moveToTile} from "../input/actions";
+import { IFallingState } from "./state/iFalling-state";
+import {Falling} from "./state/falling";
 
 export class Air implements iTile {
 
+    computeFallingBlockCollision(): IFallingState {
+        return new Falling();
+    }
+
     draw(g: CanvasRenderingContext2D, x: number, y: number) {
     }
-    color(): string {
-        return "";
-    }
+
     isAir(): boolean {
         return true;
     }

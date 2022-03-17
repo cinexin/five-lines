@@ -1,5 +1,7 @@
 import {iTile} from "./iTile";
 import {TILE_SIZE} from "../config";
+import {IFallingState} from "./state/iFalling-state";
+import {Stopped} from "./state/stopped";
 
 export class Unbreakable implements iTile {
 
@@ -41,6 +43,10 @@ export class Unbreakable implements iTile {
     }
 
     update(x: number, y: number) {
+    }
+
+    computeFallingBlockCollision(): IFallingState {
+        return new Stopped();
     }
 
 }

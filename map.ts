@@ -1,6 +1,6 @@
 import {iTile} from "./tiles/iTile";
 import {Air} from "./tiles/air";
-import {Player} from "./tiles/player";
+import {PlayerTile} from "./tiles/player-tile";
 import {Unbreakable} from "./tiles/unbreakable";
 import {Stone} from "./tiles/stone";
 import {Box} from "./tiles/box";
@@ -48,7 +48,7 @@ const BLUE_KEY = new KeyConfiguration("#00ccff", false, new RemoveLock2());
 function transformTile(tile: RawTile) {
     switch (tile) {
         case RawTile.AIR: return new Air();
-        case RawTile.PLAYER: return new Player();
+        case RawTile.PLAYER: return new PlayerTile();
         case RawTile.UNBREAKABLE: return new Unbreakable();
         case RawTile.STONE: return new Stone(new Stopped());
         case RawTile.FALLING_STONE: return new Stone(new Falling());

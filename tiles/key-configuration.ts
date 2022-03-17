@@ -1,4 +1,6 @@
 import {IRemoveStrategy} from "./iRemove-strategy";
+import {removeLock} from "./actions";
+import {TILE_SIZE} from "../config";
 
 export class KeyConfiguration {
     constructor(
@@ -8,15 +10,16 @@ export class KeyConfiguration {
     ) {
     }
 
-    getColor(): string {
-        return this.color;
+    coloring(g: CanvasRenderingContext2D, x, y) {
+        g.fillStyle = this.color;
+        g.fillRect(x * TILE_SIZE, y * TILE_SIZE, TILE_SIZE, TILE_SIZE);
     }
 
     is1(): boolean {
         return this._1;
     }
 
-    getRemoveStrategy(): IRemoveStrategy {
-        return this.removeStrategy;
+    removeLock() {
+        removeLock(this.removeStrategy)
     }
 }

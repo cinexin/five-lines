@@ -2,6 +2,8 @@ import {iTile} from "./iTile";
 import {TILE_SIZE} from "../config";
 import {player} from "../player";
 import {moveToTile} from "../input/actions";
+import {IFallingState} from "./state/iFalling-state";
+import {Stopped} from "./state/stopped";
 
 export class Flux implements iTile {
 
@@ -44,6 +46,10 @@ export class Flux implements iTile {
     }
 
     update(x: number, y: number) {
+    }
+
+    computeFallingBlockCollision(): IFallingState {
+        return new Stopped();
     }
 
 }

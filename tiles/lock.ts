@@ -1,6 +1,8 @@
 import {iTile} from "./iTile";
 import {TILE_SIZE} from "../config";
 import {KeyConfiguration} from "./key-configuration";
+import {IFallingState} from "./state/iFalling-state";
+import {Stopped} from "./state/stopped";
 
 export class Lock implements iTile {
     constructor(
@@ -8,14 +10,8 @@ export class Lock implements iTile {
     ) {
     }
 
-    color(): string {
-        return this.keyConfig.getColor();
-    }
-
     draw(g: CanvasRenderingContext2D, x: number, y: number) {
-        g.fillStyle = this.color();
-        g.fillRect(x * TILE_SIZE, y * TILE_SIZE,
-            TILE_SIZE, TILE_SIZE);
+        this.keyConfig.coloring(g, x, y);
     }
 
     drop() {
@@ -47,5 +43,9 @@ export class Lock implements iTile {
     }
 
     update(x: number, y: number) {
+    }
+
+    computeFallingBlockCollision(): IFallingState {
+        return new Stopped();
     }
 }

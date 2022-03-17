@@ -1,6 +1,8 @@
 import {iTile} from "./iTile";
+import {IFallingState} from "./state/iFalling-state";
+import {Stopped} from "./state/stopped";
 
-export class Player implements iTile {
+export class PlayerTile implements iTile {
 
     isAir(): boolean {
         return false;
@@ -21,9 +23,6 @@ export class Player implements iTile {
     draw(g: CanvasRenderingContext2D, x: number, y: number) {
 
     }
-    color(): string {
-        return "";
-    }
 
     moveHorizontal(dx: number): void {
     }
@@ -38,6 +37,10 @@ export class Player implements iTile {
     }
 
     update(x: number, y: number) {
+    }
+
+    computeFallingBlockCollision(): IFallingState {
+        return new Stopped();
     }
 
 }
