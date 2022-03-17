@@ -1,6 +1,7 @@
 import {map} from "../map";
 import {IFallingState} from "./state/iFalling-state";
 import {iTile} from "./iTile";
+import {Player} from "../player";
 
 export class FallStrategy {
 
@@ -12,7 +13,7 @@ export class FallStrategy {
         this.fallingState.drop(tile, x, y);
     }
 
-    moveHorizontal(tile: iTile, dx: number) {
-        this.fallingState.moveHorizontal(tile, dx);
+    moveHorizontal(player: Player, tile: iTile, dx: number) {
+        this.fallingState.moveHorizontal(player, tile, dx);
     }
 }

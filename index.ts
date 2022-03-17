@@ -1,18 +1,19 @@
 import {Input} from "./input/input";
 import {map, transformMap} from "./map";
-import {player} from "./player";
 import {Left} from "./input/left";
 import {Up} from "./input/up";
 import {Right} from "./input/right";
 import {Down} from "./input/down";
-import {SLEEP, TILE_SIZE} from "./config";
+import {SLEEP} from "./config";
+import {Player} from "./player";
 
 let inputs: Input[] = [];
+const player = new Player({x: 0, y: 0});
 
 function handleInputs() {
   while (inputs.length > 0) {
     const current = inputs.pop();
-    current.handle();
+    current.handle(player);
   }
 }
 
@@ -37,11 +38,6 @@ function drawMap(g: CanvasRenderingContext2D) {
   }
 }
 
-function drawPlayer(g: CanvasRenderingContext2D) {
-  g.fillStyle = "#ff0000";
-  g.fillRect(player.x * TILE_SIZE, player.y * TILE_SIZE, TILE_SIZE, TILE_SIZE);
-}
-
 function createGraphics() {
   let canvas = document.getElementById("GameCanvas") as HTMLCanvasElement;
   let g = canvas.getContext("2d");
@@ -52,7 +48,7 @@ function createGraphics() {
 function draw() {
   const g = createGraphics();
   drawMap(g);
-  drawPlayer(g);
+  player.draw(g);
 }
 
 function gameLoop() {

@@ -1,9 +1,9 @@
 import {iTile} from "./iTile";
 import {TILE_SIZE} from "../config";
-import {player} from "../player";
 import {moveToTile} from "../input/actions";
 import {IFallingState} from "./state/iFalling-state";
 import {Stopped} from "./state/stopped";
+import {Player} from "../player";
 
 export class Flux implements iTile {
 
@@ -36,13 +36,13 @@ export class Flux implements iTile {
         return "#ccffcc";
     }
 
-    moveHorizontal(dx: number): void {
-        moveToTile({x: player.x + dx, y: player.y});
+    moveHorizontal(player: Player, dx: number): void {
+        moveToTile(player, player.getPosition());
 
     }
 
-    moveVertical(dy: number): void {
-        moveToTile({x:player.x, y: player.y + dy});
+    moveVertical(player: Player, dy: number): void {
+        moveToTile(player, player.getPosition());
     }
 
     update(x: number, y: number) {

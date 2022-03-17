@@ -1,3 +1,5 @@
+import {Player} from "../player";
+
 export interface Input {
-    handle(): void;
+    handle(player: Player): void;
 }

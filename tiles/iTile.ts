@@ -1,4 +1,5 @@
 import {IFallingState} from "./state/iFalling-state";
+import {Player} from "../player";
 
 export interface iTile {
     isAir(): boolean;
@@ -8,8 +9,8 @@ export interface iTile {
     computeFallingBlockCollision(): IFallingState;
 
     draw(g: CanvasRenderingContext2D, x: number, y: number);
-    moveHorizontal(dx: number): void;
-    moveVertical(dy: number): void;
+    moveHorizontal(player: Player, dx: number): void;
+    moveVertical(player: Player, dy: number): void;
 
     drop();
     stopDropping();

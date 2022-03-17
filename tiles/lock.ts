@@ -1,8 +1,8 @@
 import {iTile} from "./iTile";
-import {TILE_SIZE} from "../config";
 import {KeyConfiguration} from "./key-configuration";
 import {IFallingState} from "./state/iFalling-state";
 import {Stopped} from "./state/stopped";
+import {Player} from "../player";
 
 export class Lock implements iTile {
     constructor(
@@ -33,10 +33,10 @@ export class Lock implements iTile {
         return !this.keyConfig.is1();
     }
 
-    moveHorizontal(dx: number): void {
+    moveHorizontal(player: Player, dx: number): void {
     }
 
-    moveVertical(dy: number): void {
+    moveVertical(player: Player, dy: number): void {
     }
 
     stopDropping() {

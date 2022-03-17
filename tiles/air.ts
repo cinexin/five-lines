@@ -1,8 +1,8 @@
 import {iTile} from "./iTile";
-import {player} from "../player";
 import {moveToTile} from "../input/actions";
 import { IFallingState } from "./state/iFalling-state";
 import {Falling} from "./state/falling";
+import {Player} from "../player";
 
 export class Air implements iTile {
 
@@ -29,12 +29,12 @@ export class Air implements iTile {
         return false;
     }
 
-    moveHorizontal(dx: number): void {
-        moveToTile({x: player.x + dx, y: player.y});
+    moveHorizontal(player: Player, dx: number): void {
+        moveToTile(player, {x: player.getPosition().x + dx, y: player.getPosition().y});
     }
 
-    moveVertical(dy: number): void {
-        moveToTile({x:player.x, y: player.y + dy});
+    moveVertical(player: Player, dy: number): void {
+        moveToTile(player, {x:player.getPosition().x, y: player.getPosition().y + dy});
 
     }
 

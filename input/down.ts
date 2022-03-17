@@ -1,11 +1,11 @@
 import {Input} from "./input";
 import {map} from "../map";
-import {player} from "../player";
+import {Player} from "../player";
 
 export class Down implements Input {
 
-    handle(): void {
-        map[player.y + 1][player.x].moveVertical(1);
+    handle(player: Player): void {
+        map[player.getPosition().y + 1][player.getPosition().x].moveVertical(player,1);
     }
 
 }

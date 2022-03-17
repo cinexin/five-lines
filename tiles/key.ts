@@ -1,9 +1,9 @@
 import {iTile} from "./iTile";
 import {moveToTile} from "../input/actions";
-import {player} from "../player";
 import {KeyConfiguration} from "./key-configuration";
 import {IFallingState} from "./state/iFalling-state";
 import {Stopped} from "./state/stopped";
+import {Player} from "../player";
 
 export class Key implements iTile {
 
@@ -35,14 +35,14 @@ export class Key implements iTile {
         return false;
     }
 
-    moveHorizontal(dx: number): void {
+    moveHorizontal(player: Player, dx: number): void {
         this.keyConfiguration.removeLock();
-        moveToTile({x: player.x + dx, y: player.y});
+        moveToTile(player, player.getPosition());
     }
 
-    moveVertical(dy: number): void {
+    moveVertical(player: Player, dy: number): void {
         this.keyConfiguration.removeLock();
-        moveToTile({x: player.x, y: player.y + dy});
+        moveToTile(player, player.getPosition());
     }
 
     stopDropping() {

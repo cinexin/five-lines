@@ -1,10 +1,10 @@
 import {Input} from "./input";
 import {map} from "../map";
-import {player} from "../player";
+import {Player} from "../player";
 
 export class Up implements Input {
 
-    handle() {
-        map[player.y - 1][player.x].moveVertical(-1);
+    handle(player: Player) {
+        map[player.getPosition().y - 1][player.getPosition().x].moveVertical(player,-1);
     }
 }

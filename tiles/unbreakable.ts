@@ -2,6 +2,7 @@ import {iTile} from "./iTile";
 import {TILE_SIZE} from "../config";
 import {IFallingState} from "./state/iFalling-state";
 import {Stopped} from "./state/stopped";
+import {Player} from "../player";
 
 export class Unbreakable implements iTile {
 
@@ -30,10 +31,10 @@ export class Unbreakable implements iTile {
         g.fillRect(x * TILE_SIZE, y * TILE_SIZE, TILE_SIZE, TILE_SIZE);
     }
 
-    moveHorizontal(dx: number): void {
+    moveHorizontal(player: Player, dx: number): void {
     }
 
-    moveVertical(dy: number): void {
+    moveVertical(player: Player, dy: number): void {
     }
 
     drop() {

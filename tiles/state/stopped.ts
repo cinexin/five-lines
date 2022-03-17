@@ -1,8 +1,8 @@
 import {IFallingState} from "./iFalling-state";
 import {map} from "../../map";
-import {player} from "../../player";
 import {iTile} from "../iTile";
 import {moveToTile} from "../../input/actions";
+import {Player} from "../../player";
 
 export class Stopped implements IFallingState {
     isFalling(): boolean {
@@ -13,11 +13,11 @@ export class Stopped implements IFallingState {
         return true;
     }
 
-    moveHorizontal(tile: iTile, dx: number): void {
-        if (map[player.y][player.x+dx+dx].isAir() && !map[player.y+1][player.x+dx].isAir())
+    moveHorizontal(player: Player, tile: iTile, dx: number): void {
+        if (map[player.getPosition().y][player.getPosition().x+dx+dx].isAir() && !map[player.getPosition().y+1][player.getPosition().x+dx].isAir())
         {
-            map[player.y][player.x+dx + dx] = tile;
-            moveToTile({x: player.x+dx, y: player.y});
+            map[player.getPosition().y][player.getPosition().x+dx + dx] = tile;
+            moveToTile(player, {x: player.getPosition().x+dx, y: player.getPosition().y});
         }
     }
 

@@ -1,6 +1,7 @@
 import {iTile} from "./iTile";
 import {IFallingState} from "./state/iFalling-state";
 import {Stopped} from "./state/stopped";
+import {Player} from "../player";
 
 export class PlayerTile implements iTile {
 
@@ -24,10 +25,10 @@ export class PlayerTile implements iTile {
 
     }
 
-    moveHorizontal(dx: number): void {
+    moveHorizontal(player: Player, dx: number): void {
     }
 
-    moveVertical(dy: number): void {
+    moveVertical(player: Player, dy: number): void {
     }
 
     drop() {

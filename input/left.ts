@@ -1,10 +1,10 @@
 import {Input} from "./input";
 import {map} from "../map";
-import {player} from "../player";
+import {Player} from "../player";
 
 export class Left implements Input {
 
-    handle(): void {
-        map[player.y][player.x -1].moveHorizontal(-1);
+    handle(player: Player): void {
+        map[player.getPosition().y][player.getPosition().x -1].moveHorizontal(player,-1);
     }
 }

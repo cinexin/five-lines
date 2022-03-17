@@ -2,6 +2,7 @@ import {IFallingState} from "./iFalling-state";
 import {iTile} from "../iTile";
 import {map} from "../../map";
 import {Air} from "../air";
+import {Player} from "../../player";
 
 export class Falling implements IFallingState {
     isFalling(): boolean {
@@ -12,7 +13,7 @@ export class Falling implements IFallingState {
         return false;
     }
 
-    moveHorizontal(tile: iTile, dx: number): void {
+    moveHorizontal(player: Player, tile: iTile, dx: number): void {
 
     }
 
