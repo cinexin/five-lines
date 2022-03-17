@@ -2,6 +2,8 @@ import {iTile} from "./iTile";
 import {TILE_SIZE} from "../config";
 import {player} from "../player";
 import {moveToTile} from "../input/actions";
+import {map} from "../map";
+import {Air} from "./air";
 
 export class Flux implements iTile {
     isFalling(): boolean {
@@ -45,11 +47,6 @@ export class Flux implements iTile {
     isStone(): boolean {
         return false;
     }
-
-    isUnbreakable(): boolean {
-        return false;
-    }
-
     moveHorizontal(dx: number): void {
         moveToTile({x: player.x + dx, y: player.y});
 
@@ -66,4 +63,12 @@ export class Flux implements iTile {
     isStony(): boolean {
         return false;
     }
+
+    canFall(): boolean {
+        return false;
+    }
+
+    update(x: number, y: number) {
+    }
+
 }

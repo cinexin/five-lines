@@ -3,6 +3,8 @@ import {TILE_SIZE} from "../config";
 import {IFallingState} from "./state/iFalling-state";
 import {Falling} from "./state/falling";
 import {Stopped} from "./state/stopped";
+import {map} from "../map";
+import {Air} from "./air";
 
 export class Stone implements iTile {
     drop() {
@@ -70,5 +72,19 @@ export class Stone implements iTile {
 
     isStony(): boolean {
         return true;
+    }
+
+    canFall(): boolean {
+        return true;
+    }
+
+    update(x: number, y: number) {
+        if (map[y + 1][x].isAir()) {
+            this.fallingState = new Falling();
+            map[y + 1][x] = this;
+            map[y][x] = new Air();
+        } else if (this.fallingState.isFalling()) {
+            this.fallingState = new Stopped();
+        }
     }
 }

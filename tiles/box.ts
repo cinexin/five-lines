@@ -3,11 +3,14 @@ import {TILE_SIZE} from "../config";
 import {IFallingState} from "./state/iFalling-state";
 import {Falling} from "./state/falling";
 import {Stopped} from "./state/stopped";
+import {map} from "../map";
+import {Air} from "./air";
 
 export class Box implements iTile {
 
     constructor(private fallingState: IFallingState) {
     }
+
 
     isAir(): boolean {
         return false;
@@ -61,6 +64,10 @@ export class Box implements iTile {
         return false;
     }
 
+    canFall(): boolean {
+        return true;
+    }
+
     drop() {
         this.fallingState = new Falling();
     }
@@ -71,5 +78,15 @@ export class Box implements iTile {
 
     isFalling(): boolean {
         return this.fallingState.isFalling();
+    }
+
+    update(x: number, y: number) {
+        if (map[y + 1][x].isAir()) {
+            this.fallingState = new Falling();
+            map[y + 1][x] = this;
+            map[y][x] = new Air();
+        } else if (map[y][x].isFalling()) {
+            this.fallingState = new Stopped();
+        }
     }
 }

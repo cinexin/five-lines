@@ -1,7 +1,12 @@
 import {iTile} from "./iTile";
 import {TILE_SIZE} from "../config";
+import {map} from "../map";
+import {Falling} from "./state/falling";
+import {Air} from "./air";
+import {Stopped} from "./state/stopped";
 
 export class Unbreakable implements iTile {
+
     isAir(): boolean {
         return false;
     }
@@ -53,6 +58,10 @@ export class Unbreakable implements iTile {
         return false;
     }
 
+    canFall(): boolean {
+        return false;
+    }
+
     drop() {
     }
 
@@ -61,6 +70,9 @@ export class Unbreakable implements iTile {
 
     isFalling(): boolean {
         return false;
+    }
+
+    update(x: number, y: number) {
     }
 
 }

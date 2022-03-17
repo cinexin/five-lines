@@ -1,8 +1,10 @@
 import {iTile} from "./iTile";
 import {player} from "../player";
 import {moveToTile} from "../input/actions";
+import {map} from "../map";
 
 export class Air implements iTile {
+
     draw(g: CanvasRenderingContext2D, x: number, y: number) {
     }
     color(): string {
@@ -52,6 +54,9 @@ export class Air implements iTile {
     isStony(): boolean {
         return false;
     }
+    canFall(): boolean {
+        return false;
+    }
 
     drop() {
     }
@@ -63,4 +68,6 @@ export class Air implements iTile {
         return false;
     }
 
+    update(x: number, y: number) {
+    }
 }

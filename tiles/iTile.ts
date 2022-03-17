@@ -6,6 +6,7 @@ export interface iTile {
     isFalling(): boolean;
     isStony(): boolean;
     isBoxy(): boolean;
+    canFall(): boolean;
     isLock1(): boolean;
     isLock2(): boolean;
     isStone(): boolean;
@@ -17,4 +18,6 @@ export interface iTile {
 
     drop();
     stopDropping();
+
+    update(x: number, y: number);
 }

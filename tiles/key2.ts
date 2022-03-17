@@ -3,8 +3,11 @@ import {TILE_SIZE} from "../config";
 import {player} from "../player";
 import {removeLock2} from "./actions";
 import {moveToTile} from "../input/actions";
+import {map} from "../map";
+import {Air} from "./air";
 
 export class Key2 implements iTile {
+
     isFalling(): boolean {
         return false;
     }
@@ -20,6 +23,11 @@ export class Key2 implements iTile {
     isBoxy(): boolean {
         return false;
     }
+
+    canFall(): boolean {
+        return false;
+    }
+
     isAir(): boolean {
         return false;
     }
@@ -44,10 +52,6 @@ export class Key2 implements iTile {
         return false;
     }
 
-    isUnbreakable(): boolean {
-        return false;
-    }
-
     isFallingStone(): boolean {
         return false;
     }
@@ -69,5 +73,8 @@ export class Key2 implements iTile {
     moveVertical(dy: number): void {
         removeLock2();
         moveToTile({x: player.x, y: player.y + dy});
+    }
+
+    update(x: number, y: number) {
     }
 }

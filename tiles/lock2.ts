@@ -1,5 +1,7 @@
 import {iTile} from "./iTile";
 import {TILE_SIZE} from "../config";
+import {map} from "../map";
+import {Air} from "./air";
 
 export class Lock2 implements iTile {
     drop() {
@@ -58,7 +60,15 @@ export class Lock2 implements iTile {
         return false;
     }
 
+    canFall(): boolean {
+        return false;
+    }
+
+
     isFalling(): boolean {
         return false;
+    }
+
+    update(x: number, y: number) {
     }
 }

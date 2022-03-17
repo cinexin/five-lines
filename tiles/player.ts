@@ -1,4 +1,6 @@
 import {iTile} from "./iTile";
+import {map} from "../map";
+import {Air} from "./air";
 
 export class Player implements iTile {
 
@@ -50,6 +52,10 @@ export class Player implements iTile {
         return false;
     }
 
+    canFall(): boolean {
+        return false;
+    }
+    
     drop() {
     }
 
@@ -59,4 +65,8 @@ export class Player implements iTile {
     isFalling(): boolean {
         return false;
     }
+
+    update(x: number, y: number) {
+    }
+
 }
