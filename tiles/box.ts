@@ -3,8 +3,6 @@ import {TILE_SIZE} from "../config";
 import {IFallingState} from "./state/iFalling-state";
 import {Falling} from "./state/falling";
 import {Stopped} from "./state/stopped";
-import {map} from "../map";
-import {Air} from "./air";
 import {FallStrategy} from "./fall-strategy";
 
 export class Box implements iTile {
