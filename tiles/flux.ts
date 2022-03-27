@@ -36,12 +36,12 @@ export class Flux implements iTile {
     }
 
     moveHorizontal(player: Player, dx: number): void {
-        player.move({x: 0, y: 0})
+        player.move({x: dx, y: 0})
 
     }
 
     moveVertical(player: Player, dy: number): void {
-        player.move({x: 0, y: 0});
+        player.move({x: 0, y: dy});
     }
 
     update(x: number, y: number) {

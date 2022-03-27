@@ -29,7 +29,7 @@ export class Air implements iTile {
     }
 
     moveHorizontal(player: Player, dx: number): void {
-        player.moveHorizontal(dx);
+        player.move({x: dx, y: 0});
     }
 
     moveVertical(player: Player, dy: number): void {

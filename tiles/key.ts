@@ -36,12 +36,12 @@ export class Key implements iTile {
 
     moveHorizontal(player: Player, dx: number): void {
         this.keyConfiguration.removeLock();
-        player.move({x: 0, y: 0});
+        player.move({x: dx, y: 0});
     }
 
     moveVertical(player: Player, dy: number): void {
         this.keyConfiguration.removeLock();
-        player.move({x: 0, y: 0});
+        player.move({x: 0, y: dy});
     }
 
     stopDropping() {
