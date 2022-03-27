@@ -8,7 +8,7 @@ import {rawMap, SLEEP} from "./config";
 import {Player} from "./player";
 
 let inputs: Input[] = [];
-const player = new Player({x: 0, y: 0});
+const player = new Player({x: 1, y: 1});
 
 function handleInputs(map: Map) {
   while (inputs.length > 0) {
