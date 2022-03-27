@@ -1,5 +1,5 @@
 import {Input} from "./input/input";
-import {Map, transformMap} from "./map";
+import {Map} from "./map";
 import {Left} from "./input/left";
 import {Up} from "./input/up";
 import {Right} from "./input/right";
@@ -17,25 +17,9 @@ function handleInputs(map: Map) {
   }
 }
 
-function updateMap(map: Map) {
-  for (let y = map.getMap().length - 1; y >= 0; y--) {
-    for (let x = 0; x < map.getMap()[y].length; x++) {
-      map.getMap()[y][x].update(x, y, map);
-    }
-  }
-}
-
 function update(map: Map) {
   handleInputs(map);
-  updateMap(map);
-}
-
-function drawMap(g: CanvasRenderingContext2D, map: Map) {
-  for (let y = 0; y < map.getMap().length; y++) {
-    for (let x = 0; x < map.getMap()[y].length; x++) {
-      map.getMap()[y][x].draw(g, x, y);
-    }
-  }
+  map.update();
 }
 
 function createGraphics() {
@@ -47,7 +31,7 @@ function createGraphics() {
 
 function draw(map) {
   const g = createGraphics();
-  drawMap(g, map);
+  map.draw(g);
   player.draw(g);
 }
 
@@ -62,7 +46,8 @@ function gameLoop(map) {
 }
 
 window.onload = () => {
-  const map = transformMap(rawMap);
+  const map = new Map([]);
+  map.transform(rawMap);
   gameLoop(map);
 }
 

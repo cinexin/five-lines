@@ -39,17 +39,6 @@ function transformTile(tile: RawTile) {
     }
 }
 
-export function transformMap(rawMap: RawTile[][]): Map {
-    const map = new Array(rawMap.length);
-    for (let y = 0; y < rawMap.length; y++) {
-        map[y] = new Array(rawMap[y].length);
-        for (let x = 0; x < rawMap[y].length; x++) {
-            map[y][x] = transformTile(rawMap[y][x]);
-        }
-    }
-    return new Map(map);
-}
-
 export class Map {
     constructor(
         private map: iTile[][]
@@ -62,5 +51,31 @@ export class Map {
 
     setMap(map: iTile[][]) {
         this.map = map;
+    }
+
+    transform(rawMap: RawTile[][]) {
+        this.map = new Array(rawMap.length);
+        for (let y = 0; y < rawMap.length; y++) {
+            this.map[y] = new Array(rawMap[y].length);
+            for (let x = 0; x < rawMap[y].length; x++) {
+                this.map[y][x] = transformTile(rawMap[y][x]);
+            }
+        }
+    }
+
+    update() {
+        for (let y = this.map.length - 1; y >= 0; y--) {
+            for (let x = 0; x < this.map[y].length; x++) {
+                this.map[y][x].update(x, y, this);
+            }
+        }
+    }
+
+    draw(g: CanvasRenderingContext2D) {
+        for (let y = 0; y < this.map.length; y++) {
+            for (let x = 0; x < this.map[y].length; x++) {
+                this.map[y][x].draw(g, x, y);
+            }
+        }
     }
 }
