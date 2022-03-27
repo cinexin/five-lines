@@ -12,32 +12,8 @@ import {RemoveLock1} from "./tiles/remove-lock-1";
 import {Lock} from "./tiles/lock";
 import {RemoveLock2} from "./tiles/remove-lock-2";
 import {KeyConfiguration} from "./tiles/key-configuration";
+import {RawTile} from "./config";
 
-enum RawTile {
-    AIR,
-    FLUX,
-    UNBREAKABLE,
-    PLAYER,
-    STONE,
-    FALLING_STONE,
-    BOX,
-    FALLING_BOX,
-    KEY1,
-    LOCK1,
-    KEY2,
-    LOCK2
-}
-
-
-let rawMap: RawTile[][] = [
-    [2, 2, 2, 2, 2, 2, 2, 2],
-    [2, 3, 0, 1, 1, 2, 0, 2],
-    [2, 4, 2, 6, 1, 2, 0, 2],
-    [2, 8, 4, 1, 1, 2, 0, 2],
-    [2, 4, 1, 1, 1, 9, 0, 2],
-    [2, 2, 2, 2, 2, 2, 2, 2],
-];
-export let map: iTile[][];
 function assertExhausted(x: never): never {
     throw new Error("Unexpected object: " + x);
 }
@@ -63,12 +39,28 @@ function transformTile(tile: RawTile) {
     }
 }
 
-export function transformMap() {
-    map = new Array(rawMap.length);
+export function transformMap(rawMap: RawTile[][]): Map {
+    const map = new Array(rawMap.length);
     for (let y = 0; y < rawMap.length; y++) {
         map[y] = new Array(rawMap[y].length);
         for (let x = 0; x < rawMap[y].length; x++) {
             map[y][x] = transformTile(rawMap[y][x]);
         }
+    }
+    return new Map(map);
+}
+
+export class Map {
+    constructor(
+        private map: iTile[][]
+    ) {
+    }
+
+    getMap(): iTile[][] {
+        return this.map;
+    }
+
+    setMap(map: iTile[][]) {
+        this.map = map;
     }
 }

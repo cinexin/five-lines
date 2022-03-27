@@ -3,6 +3,7 @@ import {KeyConfiguration} from "./key-configuration";
 import {IFallingState} from "./state/iFalling-state";
 import {Stopped} from "./state/stopped";
 import {Player} from "../player";
+import {Map} from "../map";
 
 export class Key implements iTile {
 
@@ -34,14 +35,14 @@ export class Key implements iTile {
         return false;
     }
 
-    moveHorizontal(player: Player, dx: number): void {
-        this.keyConfiguration.removeLock();
-        player.move({x: 0, y: 0});
+    moveHorizontal(player: Player, dx: number, map: Map): void {
+        this.keyConfiguration.removeLock(map);
+        player.move({x: 0, y: 0}, map);
     }
 
-    moveVertical(player: Player, dy: number): void {
-        this.keyConfiguration.removeLock();
-        player.move({x: 0, y: 0});
+    moveVertical(player: Player, dy: number, map: Map): void {
+        this.keyConfiguration.removeLock(map);
+        player.move({x: 0, y: 0}, map);
     }
 
     stopDropping() {

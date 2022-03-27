@@ -3,6 +3,7 @@ import {TILE_SIZE} from "../config";
 import {IFallingState} from "./state/iFalling-state";
 import {Stopped} from "./state/stopped";
 import {Player} from "../player";
+import {Map} from "../map";
 
 export class Unbreakable implements iTile {
 
@@ -43,7 +44,7 @@ export class Unbreakable implements iTile {
     stopDropping() {
     }
 
-    update(x: number, y: number) {
+    update(x: number, y: number, map: Map) {
     }
 
     computeFallingBlockCollision(): IFallingState {

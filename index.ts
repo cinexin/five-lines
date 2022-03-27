@@ -1,39 +1,39 @@
 import {Input} from "./input/input";
-import {map, transformMap} from "./map";
+import {Map, transformMap} from "./map";
 import {Left} from "./input/left";
 import {Up} from "./input/up";
 import {Right} from "./input/right";
 import {Down} from "./input/down";
-import {SLEEP} from "./config";
+import {rawMap, SLEEP} from "./config";
 import {Player} from "./player";
 
 let inputs: Input[] = [];
 const player = new Player({x: 0, y: 0});
 
-function handleInputs() {
+function handleInputs(map: Map) {
   while (inputs.length > 0) {
     const current = inputs.pop();
-    current.handle(player);
+    current.handle(player, map);
   }
 }
 
-function updateMap() {
-  for (let y = map.length - 1; y >= 0; y--) {
-    for (let x = 0; x < map[y].length; x++) {
-      map[y][x].update(x, y);
+function updateMap(map: Map) {
+  for (let y = map.getMap().length - 1; y >= 0; y--) {
+    for (let x = 0; x < map.getMap()[y].length; x++) {
+      map.getMap()[y][x].update(x, y, map);
     }
   }
 }
 
-function update() {
-  handleInputs();
-  updateMap();
+function update(map: Map) {
+  handleInputs(map);
+  updateMap(map);
 }
 
-function drawMap(g: CanvasRenderingContext2D) {
-  for (let y = 0; y < map.length; y++) {
-    for (let x = 0; x < map[y].length; x++) {
-      map[y][x].draw(g, x, y);
+function drawMap(g: CanvasRenderingContext2D, map: Map) {
+  for (let y = 0; y < map.getMap().length; y++) {
+    for (let x = 0; x < map.getMap()[y].length; x++) {
+      map.getMap()[y][x].draw(g, x, y);
     }
   }
 }
@@ -45,25 +45,25 @@ function createGraphics() {
   return g;
 }
 
-function draw() {
+function draw(map) {
   const g = createGraphics();
-  drawMap(g);
+  drawMap(g, map);
   player.draw(g);
 }
 
-function gameLoop() {
+function gameLoop(map) {
   let before = Date.now();
-  update();
-  draw();
+  update(map);
+  draw(map);
   let after = Date.now();
   let frameTime = after - before;
   let sleep = SLEEP - frameTime;
-  setTimeout(() => gameLoop(), sleep);
+  setTimeout(() => gameLoop(map), sleep);
 }
 
 window.onload = () => {
-  transformMap();
-  gameLoop();
+  const map = transformMap(rawMap);
+  gameLoop(map);
 }
 
 const LEFT_KEY = "ArrowLeft";

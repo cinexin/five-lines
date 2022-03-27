@@ -5,6 +5,7 @@ import {Falling} from "./state/falling";
 import {Stopped} from "./state/stopped";
 import {FallStrategy} from "./fall-strategy";
 import {Player} from "../player";
+import {Map} from "../map";
 
 export class Box implements iTile {
     private fallStrategy: FallStrategy;
@@ -42,11 +43,11 @@ export class Box implements iTile {
         g.fillRect(x * TILE_SIZE, y * TILE_SIZE, TILE_SIZE, TILE_SIZE);
     }
 
-    moveHorizontal(player: Player, dx: number): void {
-        this.fallStrategy.moveHorizontal(player, this, dx);
+    moveHorizontal(player: Player, dx: number, map: Map): void {
+        this.fallStrategy.moveHorizontal(player, this, dx, map);
     }
 
-    moveVertical(player: Player, dy: number): void {
+    moveVertical(player: Player, dy: number, map: Map): void {
     }
 
     drop() {
@@ -58,7 +59,7 @@ export class Box implements iTile {
     }
 
 
-    update(x: number, y: number) {
-        this.fallStrategy.update(this, x, y);
+    update(x: number, y: number, map: Map) {
+        this.fallStrategy.update(this, x, y, map);
     }
 }

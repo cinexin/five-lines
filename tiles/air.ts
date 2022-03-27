@@ -2,6 +2,7 @@ import {iTile} from "./iTile";
 import {IFallingState} from "./state/iFalling-state";
 import {Falling} from "./state/falling";
 import {Player} from "../player";
+import {Map} from "../map";
 
 export class Air implements iTile {
 
@@ -28,12 +29,12 @@ export class Air implements iTile {
         return false;
     }
 
-    moveHorizontal(player: Player, dx: number): void {
-        player.moveHorizontal(dx);
+    moveHorizontal(player: Player, dx: number, map: Map): void {
+        player.moveHorizontal(dx, map);
     }
 
-    moveVertical(player: Player, dy: number): void {
-        player.move({x: 0, y: dy});
+    moveVertical(player: Player, dy: number, map: Map): void {
+        player.move({x: 0, y: dy}, map);
 
     }
 
@@ -43,6 +44,6 @@ export class Air implements iTile {
     stopDropping() {
     }
 
-    update(x: number, y: number) {
+    update(x: number, y: number, map: Map) {
     }
 }
