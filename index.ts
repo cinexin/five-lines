@@ -46,8 +46,7 @@ function gameLoop(map) {
 }
 
 window.onload = () => {
-  const map = new Map([]);
-  map.transform(rawMap);
+  const map = new Map(rawMap);
   gameLoop(map);
 }
 

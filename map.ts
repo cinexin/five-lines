@@ -44,12 +44,11 @@ function transformTile(tile: RawTile) {
 }
 
 export class Map {
-    constructor(
-        private map: iTile[][]
-    ) {
-    }
+    private map;
 
-    transform(rawMap: RawTile[][]) {
+    constructor(
+        rawMap: RawTile[][]
+    ) {
         this.map = new Array(rawMap.length);
         for (let y = 0; y < rawMap.length; y++) {
             this.map[y] = new Array(rawMap[y].length);
