@@ -9,7 +9,7 @@ export class FallStrategy {
     }
 
     update(tile: iTile, x: number, y: number, map: Map) {
-        this.fallingState = map.getMap()[y + 1][x].computeFallingBlockCollision();
+        this.fallingState = map.computeFallingBlockCollision(x, y + 1);
         this.fallingState.drop(tile, x, y, map);
     }
 
