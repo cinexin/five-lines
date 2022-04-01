@@ -1,7 +1,5 @@
 import {Position} from "./position";
 import {TILE_SIZE} from "./config";
-import {Air} from "./tiles/air";
-import {PlayerTile} from "./tiles/player-tile";
 import {iTile} from "./tiles/iTile";
 import {Map} from "./map";
 
@@ -22,25 +20,23 @@ export class Player {
     }
 
     pushHorizontal(tile: iTile, dx: number, map: Map) {
-        if (map.getMap()[this.position.y][this.position.x+dx + dx].isAir()
-            && !map.getMap()[this.position.y + 1][this.position.x+dx].isAir())
-        {
-            map.getMap()[this.position.y][this.position.x+dx + dx] = tile;
+        if (map.isAir(this.position.x + dx + dx, this.position.y)
+            && !map.isAir(this.position.x + dx, this.position.y + 1)) {
+            map.setTile(this.position.x + dx + dx, this.position.y, tile);
             this.moveToTile({x: this.position.x + dx, y: this.position.y}, map);
         }
     }
 
     private moveToTile(newPosition: Position, map: Map): void {
-        map.getMap()[this.position.y][this.position.x] = new Air();
-        map.getMap()[newPosition.y][newPosition.x] = new PlayerTile();
+        map.movePlayer(this.position.x, this.position.y, newPosition.x, newPosition.y);
         this.position = newPosition;
     }
 
     moveHorizontal(dx: number, map: Map) {
-        map.getMap()[this.position.y][this.position.x + dx].moveHorizontal(this, dx, map);
+        map.moveHorizontal(this, this.position.x, this.position.y, dx);
     }
 
     moveVertical(dy: number, map: Map) {
-        map.getMap()[this.position.y + dy][this.position.x].moveVertical(this,dy, map);
+        map.moveVertical(this, this.position.x, this.position.y, dy);
     }
 }

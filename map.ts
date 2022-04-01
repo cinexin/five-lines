@@ -13,6 +13,9 @@ import {Lock} from "./tiles/lock";
 import {RemoveLock2} from "./tiles/remove-lock-2";
 import {KeyConfiguration} from "./tiles/key-configuration";
 import {RawTile} from "./config";
+import {IFallingState} from "./tiles/state/iFalling-state";
+import {IRemoveStrategy} from "./tiles/iRemove-strategy";
+import {Player} from "./player";
 
 function assertExhausted(x: never): never {
     throw new Error("Unexpected object: " + x);
@@ -45,14 +48,6 @@ export class Map {
     ) {
     }
 
-    getMap(): iTile[][] {
-        return this.map;
-    }
-
-    setMap(map: iTile[][]) {
-        this.map = map;
-    }
-
     transform(rawMap: RawTile[][]) {
         this.map = new Array(rawMap.length);
         for (let y = 0; y < rawMap.length; y++) {
@@ -77,5 +72,50 @@ export class Map {
                 this.map[y][x].draw(g, x, y);
             }
         }
+    }
+
+    drop(tile: iTile, x: number, y: number) {
+        this.map[y+1][x] = tile;
+        this.map[y][x] = new Air();
+    }
+
+    computeFallingBlockCollision(x: number, y: number): IFallingState {
+        return this.map[y][x].computeFallingBlockCollision();
+    }
+
+    removeLock(shouldRemove: IRemoveStrategy) {
+        for (let y = 0; y < this.map.length; y++) {
+            for (let x = 0; x < this.map[y].length; x++) {
+                if (shouldRemove.check(this.map[y][x])) {
+                    this.map[y][x] = new Air();
+                }
+            }
+        }
+    }
+
+    isAir(x: number, y: number) {
+        return this.map[y][x].isAir();
+    }
+
+    setTile(x: number, y: number, tile: iTile)
+    {
+        this.map[y][x] = tile;
+    }
+
+    movePlayer(x: number, y: number,
+               newx: number, newy: number)
+    {
+        this.map[y][x] = new Air();
+        this.map[newy][newx] = new PlayerTile();
+    }
+
+    moveHorizontal(player: Player, x: number, y: number, dx: number)
+    {
+        this.map[y][x+dx].moveHorizontal(player, dx, this);
+    }
+
+    moveVertical(player: Player, x: number, y: number, dy: number)
+    {
+        this.map[y + dy][x].moveVertical(player, dy, this);
     }
 }
