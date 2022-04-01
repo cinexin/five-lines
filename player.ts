@@ -6,7 +6,7 @@ import {Map} from "./map";
 export class Player {
 
     constructor(
-        private position: Position
+        public position: Position
     ) {
     }
 
@@ -28,15 +28,15 @@ export class Player {
     }
 
     private moveToTile(newPosition: Position, map: Map): void {
-        map.movePlayer(this.position.x, this.position.y, newPosition.x, newPosition.y);
+        map.movePlayer(this.position, newPosition);
         this.position = newPosition;
     }
 
     moveHorizontal(dx: number, map: Map) {
-        map.moveHorizontal(this, this.position.x, this.position.y, dx);
+        map.moveHorizontal(this, dx);
     }
 
     moveVertical(dy: number, map: Map) {
-        map.moveVertical(this, this.position.x, this.position.y, dy);
+        map.moveVertical(this, dy);
     }
 }

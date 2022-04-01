@@ -16,6 +16,7 @@ import {RawTile} from "./config";
 import {IFallingState} from "./tiles/state/iFalling-state";
 import {IRemoveStrategy} from "./tiles/iRemove-strategy";
 import {Player} from "./player";
+import {Position} from "./position";
 
 function assertExhausted(x: never): never {
     throw new Error("Unexpected object: " + x);
@@ -102,20 +103,19 @@ export class Map {
         this.map[y][x] = tile;
     }
 
-    movePlayer(x: number, y: number,
-               newx: number, newy: number)
+    movePlayer(from: Position, to: Position)
     {
-        this.map[y][x] = new Air();
-        this.map[newy][newx] = new PlayerTile();
+        this.map[from.y][from.x] = new Air();
+        this.map[to.y][to.x] = new PlayerTile();
     }
 
-    moveHorizontal(player: Player, x: number, y: number, dx: number)
+    moveHorizontal(player: Player, dx: number)
     {
-        this.map[y][x+dx].moveHorizontal(player, dx, this);
+        this.map[player.position.y][player.position.x+dx].moveHorizontal(player, dx, this);
     }
 
-    moveVertical(player: Player, x: number, y: number, dy: number)
+    moveVertical(player: Player, dy: number)
     {
-        this.map[y + dy][x].moveVertical(player, dy, this);
+        this.map[player.position.y + dy][player.position.x].moveVertical(player, dy, this);
     }
 }
