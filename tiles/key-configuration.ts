@@ -1,5 +1,4 @@
 import {IRemoveStrategy} from "./iRemove-strategy";
-import {removeLock} from "./actions";
 import {TILE_SIZE} from "../config";
 import {Map} from "../map";
 
@@ -21,6 +20,6 @@ export class KeyConfiguration {
     }
 
     removeLock(map: Map) {
-        removeLock(this.removeStrategy, map)
+        map.removeLock(this.removeStrategy);
     }
 }
