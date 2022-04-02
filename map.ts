@@ -44,7 +44,7 @@ function transformTile(tile: RawTile) {
 }
 
 export class Map {
-    private map;
+    private readonly map;
 
     constructor(
         rawMap: RawTile[][]
